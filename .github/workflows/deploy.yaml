@@ -12,7 +12,7 @@ jobs:
     env:
       AWS_REGION: eu-west-2
       CLUSTER_NAME: eks-lab-cluster
-      HELM_RELEASE:
+      HELM_RELEASE: garden
       NAMESPACE: garden
       CHART: oci://registry-1.docker.io/johnwalker333/garden
     runs-on: ubuntu-latest
