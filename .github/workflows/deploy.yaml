@@ -12,7 +12,9 @@ jobs:
     env:
       AWS_REGION: eu-west-2
       CLUSTER_NAME: eks-lab-cluster
-
+      HELM_RELEASE:
+      NAMESPACE: garden
+      CHART: oci://registry-1.docker.io/johnwalker333/garden
     runs-on: ubuntu-latest
 
     steps:
@@ -35,8 +37,8 @@ jobs:
 
       - name: Deploy Helm chart to EKS
         run: |
-          helm upgrade --install garden oci://registry-1.docker.io/johnwalker333/garden \
-            --namespace garden --create-namespace \
+          helm upgrade --install ${{ env.HELM_RELEASE }} ${{ env.CHART }} \
+            --namespace ${{ env.NAMESPACE }} --create-namespace \
             -f values.yaml
 
         
